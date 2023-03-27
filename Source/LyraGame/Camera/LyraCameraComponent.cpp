@@ -50,10 +50,13 @@ void ULyraCameraComponent::GetCameraView(float DeltaTime, FMinimalViewInfo& Desi
 	CameraModeView.FieldOfView += FieldOfViewOffset;
 	FieldOfViewOffset = 0.0f;
 
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (CameraModeView.Location).X, (CameraModeView.Location).Y, (CameraModeView.Location).Z));
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("Local: %f, %f, %f"), (GetRelativeLocation()).X, (GetRelativeLocation()).Y, (GetRelativeLocation()).Z));
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("Wolrd: %f, %f, %f"), (GetComponentLocation()).X, (GetComponentLocation()).Y, (GetComponentLocation()).Z));
 	
-
 	// Keep camera component in sync with the latest view.
 	SetWorldLocationAndRotation(CameraModeView.Location, CameraModeView.Rotation);
+	//SetRelativeLocationAndRotation(CameraModeView.Location, CameraModeView.Rotation);
 	FieldOfView = CameraModeView.FieldOfView;
 
 	// Fill in desired view.

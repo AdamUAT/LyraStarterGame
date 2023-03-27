@@ -36,6 +36,9 @@ void ULyraCameraMode_ThirdPerson::UpdateView(float DeltaTime)
 
 	PivotRotation.Pitch = FMath::ClampAngle(PivotRotation.Pitch, ViewPitchMin, ViewPitchMax);
 
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Hello"));
+	//PivotRotation.Pitch += 5;
+
 	View.Location = PivotLocation;
 	View.Rotation = PivotRotation;
 	View.ControlRotation = View.Rotation;
@@ -60,6 +63,8 @@ void ULyraCameraMode_ThirdPerson::UpdateView(float DeltaTime)
 
 		View.Location = PivotLocation + PivotRotation.RotateVector(TargetOffset);
 	}
+
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (View.Location).X, (View.Location).Y, (View.Location).Z));
 
 	// Adjust final desired camera location to prevent any penetration
 	UpdatePreventPenetration(DeltaTime);
