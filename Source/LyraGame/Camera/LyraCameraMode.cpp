@@ -100,6 +100,11 @@ FVector ULyraCameraMode::GetPivotLocation() const
 			const float ActualHalfHeight = CapsuleComp->GetUnscaledCapsuleHalfHeight();
 			const float HeightAdjustment = (DefaultHalfHeight - ActualHalfHeight) + TargetCharacterCDO->BaseEyeHeight;
 
+			//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (FVector::UpVector * HeightAdjustment).X, (FVector::UpVector * HeightAdjustment).Y, (FVector::UpVector * HeightAdjustment).Z));
+			//return(FVector::UpVector * HeightAdjustment);
+
+			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("asf"));
+
 			return TargetCharacter->GetActorLocation() + (FVector::UpVector * HeightAdjustment);
 		}
 
@@ -116,6 +121,7 @@ FRotator ULyraCameraMode::GetPivotRotation() const
 
 	if (const APawn* TargetPawn = Cast<APawn>(TargetActor))
 	{
+		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (TargetPawn->GetViewRotation()).Roll, (TargetPawn->GetViewRotation()).Pitch, (TargetPawn->GetViewRotation()).Yaw));
 		return TargetPawn->GetViewRotation();
 	}
 
@@ -134,6 +140,9 @@ void ULyraCameraMode::UpdateView(float DeltaTime)
 	FRotator PivotRotation = GetPivotRotation();
 
 	PivotRotation.Pitch = FMath::ClampAngle(PivotRotation.Pitch, ViewPitchMin, ViewPitchMax);
+
+	//if (GEngine)
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Hello"));
 
 	View.Location = PivotLocation;
 	View.Rotation = PivotRotation;
