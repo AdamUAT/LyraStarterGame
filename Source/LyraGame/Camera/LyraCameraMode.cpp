@@ -121,7 +121,7 @@ FRotator ULyraCameraMode::GetPivotRotation() const
 
 	if (const APawn* TargetPawn = Cast<APawn>(TargetActor))
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (TargetPawn->GetViewRotation()).Roll, (TargetPawn->GetViewRotation()).Pitch, (TargetPawn->GetViewRotation()).Yaw));
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (TargetPawn->GetViewRotation()).Roll, (TargetPawn->GetViewRotation()).Pitch, (TargetPawn->GetViewRotation()).Yaw));
 		return TargetPawn->GetViewRotation();
 	}
 
