@@ -34,7 +34,9 @@ void ULyraCameraMode_ThirdPerson::UpdateView(float DeltaTime)
 	FVector PivotLocation = GetPivotLocation() + CurrentCrouchOffset;
 	FRotator PivotRotation = GetPivotRotation();
 
-	PivotRotation.Pitch = FMath::ClampAngle(PivotRotation.Pitch, ViewPitchMin, ViewPitchMax);
+	//PivotRotation.Pitch = FMath::ClampAngle(PivotRotation.Pitch, ViewPitchMin, ViewPitchMax);
+
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f"), ViewPitchMin));
 
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Hello"));
 	//PivotRotation.Pitch += 5;

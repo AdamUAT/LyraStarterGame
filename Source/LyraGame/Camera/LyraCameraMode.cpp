@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "Components/CapsuleComponent.h"
 #include "Engine/Canvas.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -105,7 +106,8 @@ FVector ULyraCameraMode::GetPivotLocation() const
 
 			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("asf"));
 
-			return TargetCharacter->GetActorLocation() + (FVector::UpVector * HeightAdjustment);
+			//return TargetCharacter->GetActorLocation() + (FVector::UpVector * HeightAdjustment);
+			return TargetCharacter->GetActorLocation() + (UKismetMathLibrary::GetUpVector(GetPivotRotation()) * HeightAdjustment);
 		}
 
 		return TargetPawn->GetPawnViewLocation();
@@ -121,7 +123,7 @@ FRotator ULyraCameraMode::GetPivotRotation() const
 
 	if (const APawn* TargetPawn = Cast<APawn>(TargetActor))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (TargetPawn->GetViewRotation()).Roll, (TargetPawn->GetViewRotation()).Pitch, (TargetPawn->GetViewRotation()).Yaw));
+		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("%f, %f, %f"), (TargetPawn->GetViewRotation()).Pitch, (TargetPawn->GetViewRotation()).Yaw, (TargetPawn->GetViewRotation()).Roll));
 		return TargetPawn->GetViewRotation();
 	}
 
