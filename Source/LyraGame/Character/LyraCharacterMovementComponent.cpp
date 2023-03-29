@@ -28,12 +28,12 @@ void ULyraCharacterMovementComponent::SimulateMovement(float DeltaTime)
 	{
 		// Preserve our replicated acceleration
 		const FVector OriginalAcceleration = Acceleration;
-		Super::SimulateMovement(DeltaTime);
+		//Super::SimulateMovement(DeltaTime);
 		Acceleration = OriginalAcceleration;
 	}
 	else
 	{
-		Super::SimulateMovement(DeltaTime);
+		//Super::SimulateMovement(DeltaTime);
 	}
 }
 
